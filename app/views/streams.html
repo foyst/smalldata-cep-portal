@@ -1,0 +1,50 @@
+<h1>Streams</h1>
+
+<div ng-show="viewState == viewStateEnum.LIST">
+  <div><a ng-click="addStream()" class="btn btn-sm btn-primary" role="button">+</a></div>
+  <br/>
+
+  <div>
+    <table class="table table-striped table-hover small">
+      <tr class="primary">
+        <th>Name</th>
+        <th>Description</th>
+        <th/>
+      </tr>
+      <tr ng-repeat="stream in streams">
+        <td>{{stream.name}}</td>
+        <td>{{stream.description}}</td>
+        <td>
+          <a class="link" ng-click="editStream(stream)">Edit</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div ng-show="viewState == viewStateEnum.EDIT">
+  <h3 ng-show="modifyState == modifyStateEnum.ADDING" class='page-header'>Add Input Stream</h3>
+  <h3 ng-show="modifyState == modifyStateEnum.EDITING" class='page-header'>Edit Input Stream '{{ currentStream.name }}'</h3>
+  <br/>
+  <div class="form-group">
+    <label for="editName"><b class="mandatoryMarker">*</b>&nbsp; Name</label>
+    <input type="text" class="form-control" ng-model="currentStream.name"
+           id="editName" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <label for="editDescription">Description</label>
+    <input type="text" class="form-control" ng-model="currentStream.description"
+           id="editDescription" placeholder="Description">
+  </div>
+  <div class="form-group">
+    <label for="editDefinition"><b class="mandatoryMarker">*</b>&nbsp; Definition</label>
+    <input type="text" class="form-control" ng-model="currentStream.definition"
+           id="editDefinition" placeholder="Definition">
+  </div>
+  <div>
+    <a ng-click="resetPage()" class="btn btn-sm btn-default" role="button">Cancel</a>
+    <a ng-click="saveStream(currentStream)" class="btn btn-sm btn-primary" role="button">Save</a>
+  </div>
+</div>
+
+<br/>
