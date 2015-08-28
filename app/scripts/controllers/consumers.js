@@ -7,7 +7,7 @@ angular.module('smalldataCepPortalApp')
     var Consumer = consumers;
 
     $scope.eventConsumerTypes = [
-      {name: "kafka", class: "KafkaEventConsumerConfigDto"}
+      {name: "Kafka", class: "KafkaEventConsumerConfigDto"}
     ];
 
     $scope.viewStateEnum = {
@@ -61,6 +61,24 @@ angular.module('smalldataCepPortalApp')
       streams.query(function(returnedStreams) {
         $scope.existingStreams = returnedStreams;
       });
+    };
+
+    $scope.getConsumerSimpleName = function (consumerTypeClass) {
+
+      for (var i = 0; i < $scope.eventConsumerTypes.length; i++) {
+        if ($scope.eventConsumerTypes[i].class === consumerTypeClass) {
+          return $scope.eventConsumerTypes[i].name;
+        }
+      }
+    };
+
+    $scope.getStreamName = function (streamId) {
+
+      for (var i = 0; i < $scope.existingStreams.length; i++) {
+        if ($scope.existingStreams[i].streamId === streamId) {
+          return $scope.existingStreams[i].name;
+        }
+      }
     };
 
     $scope.resetPage();

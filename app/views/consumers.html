@@ -12,8 +12,8 @@
         <th/>
       </tr>
       <tr ng-repeat="consumer in consumers">
-        <td>{{consumer.streamId}}</td>
-        <td>{{consumer.consumerType}}</td>
+        <td>{{getStreamName(consumer.streamId)}}</td>
+        <td>{{getConsumerSimpleName(consumer.consumerType)}}</td>
         <td>
           <a class="link" ng-click="editConsumer(consumer)">Edit</a>
         </td>
@@ -26,7 +26,7 @@
   <h3 ng-show="modifyState == modifyStateEnum.ADDING" class='page-header'>Add Event Consumer</h3>
 
   <h3 ng-show="modifyState == modifyStateEnum.EDITING" class='page-header'>Edit Event Consumer '{{
-    currentConsumer.consumerType }}'</h3>
+    getStreamName(currentConsumer.streamId)}} to {{getConsumerSimpleName(currentConsumer.consumerType)}}'</h3>
   <br/>
 
   <div class="form-group">
