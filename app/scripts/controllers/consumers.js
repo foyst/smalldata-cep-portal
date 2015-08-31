@@ -81,5 +81,15 @@ angular.module('smalldataCepPortalApp')
       }
     };
 
+    $scope.startConsumer = function (eventConsumer) {
+
+      consumers.start(eventConsumer);
+    };
+
+    $scope.stopConsumer = function (eventConsumer) {
+
+      consumers.stop(eventConsumer);
+    };
+
     $scope.resetPage();
   });

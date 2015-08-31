@@ -11,6 +11,8 @@ angular.module('smalldataCepPortalApp')
     });
   }).factory("consumers", function ($resource, configService) {
     return $resource(configService.apiUrl + "/eventConsumers/:id", null, {
-      'update': {method: 'PUT'}
+      'update': {method: 'PUT'},
+      'start': {method: 'POST', url: configService.apiUrl + "/eventConsumers/:id/start", params: {id:'@eventConsumerId'}},
+      'stop': {method: 'POST', url: configService.apiUrl + "/eventConsumers/:id/stop"}
     });
   });

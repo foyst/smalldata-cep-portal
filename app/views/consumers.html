@@ -10,13 +10,15 @@
         <th>Stream</th>
         <th>Consumer Type</th>
         <th/>
+        <th/>
+        <th/>
       </tr>
       <tr ng-repeat="consumer in consumers">
         <td>{{getStreamName(consumer.streamId)}}</td>
         <td>{{getConsumerSimpleName(consumer.consumerType)}}</td>
-        <td>
-          <a class="link" ng-click="editConsumer(consumer)">Edit</a>
-        </td>
+        <td><a class="link" ng-click="editConsumer(consumer)">Edit</a></td>
+        <td><a class="link" ng-click="startConsumer(consumer)">Start</a></td>
+        <td><a class="link" ng-click="stopConsumer(consumer)">Stop</a></td>
       </tr>
     </table>
   </div>
