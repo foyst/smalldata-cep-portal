@@ -7,15 +7,15 @@
   <div>
     <table class="table table-striped table-hover small">
       <tr class="primary">
-        <th>Stream</th>
         <th>Consumer Type</th>
+        <th>Stream</th>
         <th/>
         <th/>
         <th/>
       </tr>
       <tr ng-repeat="consumer in consumers">
-        <td>{{getStreamName(consumer.streamId)}}</td>
         <td>{{getConsumerSimpleName(consumer.consumerType)}}</td>
+        <td>{{getStreamName(consumer.streamId)}}</td>
         <td><a class="link" ng-click="editConsumer(consumer)">Edit</a></td>
         <td><a class="link" ng-click="startConsumer(consumer)">Start</a></td>
         <td><a class="link" ng-click="stopConsumer(consumer)">Stop</a></td>
@@ -26,9 +26,7 @@
 
 <div ng-show="viewState == viewStateEnum.EDIT">
   <h3 ng-show="modifyState == modifyStateEnum.ADDING" class='page-header'>Add Event Consumer</h3>
-
-  <h3 ng-show="modifyState == modifyStateEnum.EDITING" class='page-header'>Edit Event Consumer '{{
-    getStreamName(currentConsumer.streamId)}} to {{getConsumerSimpleName(currentConsumer.consumerType)}}'</h3>
+  <h3 ng-show="modifyState == modifyStateEnum.EDITING" class='page-header'>Edit Event Consumer '{{getConsumerSimpleName(currentConsumer.consumerType)}} to {{getStreamName(currentConsumer.streamId)}}'</h3>
   <br/>
 
   <div class="form-group">
@@ -37,15 +35,15 @@
             ng-options="eventConsumerType.class as eventConsumerType.name for eventConsumerType in eventConsumerTypes" id="consumerType"/>
   </div>
 
+  <div class="form-group">
+    <label for="editStream"><b class="mandatoryMarker">*</b>&nbsp; Target Stream</label>
+    <select type="text" class="form-control" ng-model="currentConsumer.streamId"
+            ng-options="stream.streamId as stream.name for stream in existingStreams" id="editStream">
+      <option value=""></option>
+    </select>
+  </div>
+  <!-- TODO: Strip out into partials -->
   <div ng-show="currentConsumer.consumerType == 'KafkaEventConsumerConfigDto'">
-
-    <div class="form-group">
-      <label for="editStream"><b class="mandatoryMarker">*</b>&nbsp; Target Stream</label>
-      <select type="text" class="form-control" ng-model="currentConsumer.streamId"
-              ng-options="stream.streamId as stream.name for stream in existingStreams" id="editStream">
-        <option value=""></option>
-      </select>
-    </div>
 
     <div class="form-group">
       <label for="editTopic"><b class="mandatoryMarker">*</b>&nbsp; Topic</label>

@@ -7,7 +7,8 @@ angular.module('smalldataCepPortalApp')
     var Consumer = consumers;
 
     $scope.eventConsumerTypes = [
-      {name: "Kafka", class: "KafkaEventConsumerConfigDto"}
+      {name: "Kafka", class: "KafkaEventConsumerConfigDto"},
+      {name: "Rest", class: "RestEventConsumerConfigDto"}
     ];
 
     $scope.viewStateEnum = {
