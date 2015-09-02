@@ -13,6 +13,6 @@ angular.module('smalldataCepPortalApp')
     return $resource(configService.apiUrl + "/eventConsumers/:id", null, {
       'update': {method: 'PUT'},
       'start': {method: 'POST', url: configService.apiUrl + "/eventConsumers/:id/start", params: {id:'@eventConsumerId'}},
-      'stop': {method: 'POST', url: configService.apiUrl + "/eventConsumers/:id/stop"}
+      'stop': {method: 'POST', url: configService.apiUrl + "/eventConsumers/:id/stop", params: {id:'@eventConsumerId'}}
     });
   });
