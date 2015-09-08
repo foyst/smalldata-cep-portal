@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smalldataCepPortalApp')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function (eventConsumerService) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
