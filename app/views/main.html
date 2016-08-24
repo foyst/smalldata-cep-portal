@@ -3,6 +3,17 @@
 </div>
 
 <div class="row marketing">
+
+  <div class="form-group">
+    <label for="eventType">Event Type</label>
+    <select type="text" class="form-control" ng-model="selectedEventType"
+            ng-options="eventType for eventType in observedEventTypes" id="eventType">
+      <option value="">All</option>
+    </select>
+  </div>
+
   <h4>Latest messages:</h4>
-  <div ng-repeat="cepEvent in messages">{{cepEvent}}</div>
+  <div ng-repeat="cepEvent in messages | filter:(!!selectedEventType || undefined) && {streamId: selectedEventType}">Received: {{cepEvent.timestamp}}, Event
+    Type: {{cepEvent.streamId}}, Event Data: {{cepEvent.eventData}}
+  </div>
 </div>

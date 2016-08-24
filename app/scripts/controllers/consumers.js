@@ -11,6 +11,11 @@ angular.module('smalldataCepPortalApp')
       {name: "Rest", class: "RestEventConsumerConfigDto"}
     ];
 
+    $scope.transformerTypes = [
+      {transformerId: "ORDERED_JSON", name: "Ordered Json"},
+      {transformerId: "UNESCAPED_STRING_ARRAY", name: "Unescaped String Array"}
+    ];
+
     $scope.viewStateEnum = {
       LIST: "LIST",
       EDIT: "EDIT"

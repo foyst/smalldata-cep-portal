@@ -26,13 +26,15 @@
 
 <div ng-show="viewState == viewStateEnum.EDIT">
   <h3 ng-show="modifyState == modifyStateEnum.ADDING" class='page-header'>Add Event Consumer</h3>
-  <h3 ng-show="modifyState == modifyStateEnum.EDITING" class='page-header'>Edit Event Consumer '{{getConsumerSimpleName(currentConsumer.consumerType)}} to {{getStreamName(currentConsumer.streamId)}}'</h3>
+  <h3 ng-show="modifyState == modifyStateEnum.EDITING" class='page-header'>Edit Event Consumer
+    '{{getConsumerSimpleName(currentConsumer.consumerType)}} to {{getStreamName(currentConsumer.streamId)}}'</h3>
   <br/>
 
   <div class="form-group">
     <label for="consumerType"><b class="mandatoryMarker">*</b>&nbsp; Consumer Type</label>
     <select type="text" class="form-control" ng-model="currentConsumer.consumerType"
-            ng-options="eventConsumerType.class as eventConsumerType.name for eventConsumerType in eventConsumerTypes" id="consumerType"/>
+            ng-options="eventConsumerType.class as eventConsumerType.name for eventConsumerType in eventConsumerTypes"
+            id="consumerType"/>
   </div>
 
   <div class="form-group">
@@ -49,6 +51,14 @@
       <label for="editTopic"><b class="mandatoryMarker">*</b>&nbsp; Topic</label>
       <input type="text" class="form-control" ng-model="currentConsumer.topic"
              id="editTopic" placeholder="Topic">
+    </div>
+
+    <div class="form-group">
+      <label for="editTransformerType"><b class="mandatoryMarker">*</b>&nbsp; Message Transformer Type</label>
+      <select type="text" class="form-control" ng-model="currentConsumer.messageTransformer"
+              ng-options="transformer.transformerId as transformer.name for transformer in transformerTypes" id="editTransformerType">
+        <option value=""></option>
+      </select>
     </div>
 
     <div class="form-group">
