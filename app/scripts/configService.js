@@ -1,7 +1,19 @@
 'use strict';
 
 angular.module('smalldataCepPortalApp')
-  .service("configService", function() {
+  .provider("configService", function() {
 
-    this.apiUrl = "http://localhost:8080/v1";
+    var config = {};
+
+    this.configure = function(newConfig) {
+
+      angular.extend(config, newConfig);
+    };
+
+    this.$get = [function () {
+      if (!config) {
+        throw new Error('CEP API URL must be configured');
+      }
+      return config;
+    }];
 });

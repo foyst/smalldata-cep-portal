@@ -48,3 +48,14 @@ angular
         redirectTo: '/'
       });
   });
+
+angular.element(document).ready(function () {
+  $.get('config/environment.json', function (envData) {
+
+      angular.module('smalldataCepPortalApp').config(['configServiceProvider', function(configServiceProvider) {
+        configServiceProvider.configure(envData);
+      }]);
+
+      angular.bootstrap('#app', ['smalldataCepPortalApp'])
+    });
+});

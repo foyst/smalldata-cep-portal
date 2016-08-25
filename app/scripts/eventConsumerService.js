@@ -9,7 +9,7 @@ angular.module("smalldataCepPortalApp").service("eventConsumerService", function
     messageIds = [];
 
   service.RECONNECT_TIMEOUT = 30000;
-  service.SOCKET_URL = configService.apiUrl + "/eventWebSocketHandler";
+  service.SOCKET_URL = configService.cepPortalUrl + "/eventWebSocketHandler";
   service.CHAT_TOPIC = "/v1/topic";
   service.CHAT_BROKER = "/app/chat";
 
